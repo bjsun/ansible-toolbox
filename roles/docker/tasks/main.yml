@@ -1,0 +1,25 @@
+---
+- name: install docker
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - docker
+    - python-docker-py
+    - docker-logrotate
+  tags:
+    - install
+    - docker
+
+- name: modify log-driver options for docker
+  copy:
+    src: sysconfig/docker
+    dest: /etc/sysconfig/docker
+    mode: 0644
+  notify:
+    - restart docker
+  tags:
+    - config
+
+- name: start docker service
+  service: name=docker state=started enabled=yes

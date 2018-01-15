@@ -1,0 +1,18 @@
+---
+- name: Add Elasticsearch GPG key.
+  rpm_key:
+    key: https://packages.elastic.co/GPG-KEY-elasticsearch
+    state: present
+
+- name: Add elastic repository.
+  copy:
+    src: elastic.repo
+    dest: /etc/yum.repos.d/elastic.repo
+    mode: 0644
+
+- name: install linux basic tools
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - net-tools
