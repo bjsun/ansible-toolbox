@@ -5,12 +5,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "centos/7"
   config.ssh.forward_agent = true
   config.ssh.insert_key = false
-  config.ssh.private_key_path = ["~/.vagrant.d/insecure_private_key"]
-  config.vm.provision :ansible do |ansible|
-    ansible.limit = "all"
-    ansible.playbook = "provision.yml"
-    ansible.inventory_path = "hosts"
-  end
+  # config.ssh.private_key_path = ["~/.vagrant.d/insecure_private_key"]
 
   config.vm.define "master" do |master_config|
     master_config.vm.hostname = "master"
