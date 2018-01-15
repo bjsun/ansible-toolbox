@@ -9,8 +9,8 @@
 #   - A hostname/ip can be a member of multiple groups
 
 [master]
-master 	ansible_user=vagrant ansible_host=10.0.15.10
+master 	ansible_user=vagrant
 
 [node]
-node1 	ansible_user=vagrant ansible_host=10.0.15.11
-node2 	ansible_user=vagrant ansible_host=10.0.15.12
+node1 	ansible_user=vagrant
+node2 	ansible_user=vagrant
