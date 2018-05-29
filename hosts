@@ -7,10 +7,27 @@
 #   - Groups of hosts are delimited by [header] elements
 #   - You can enter hostnames or ip addresses
 #   - A hostname/ip can be a member of multiple groups
-
-[master]
 master 	ansible_user=vagrant
-
-[node]
 node1 	ansible_user=vagrant
 node2 	ansible_user=vagrant
+
+[master]
+master
+
+[node]
+node1
+node2
+
+[etcd]
+master
+node1
+node2
+
+[elasticsearch]
+master
+node1
+node2
+
+[kubernetes:children]
+master
+node

@@ -10,3 +10,6 @@ trim_trailing_whitespace = true
 
 [*.{yml,j2}]
 indent_size = 2
+
+[Vagrantfile]
+indent_size = 2

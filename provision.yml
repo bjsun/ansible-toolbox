@@ -1,9 +1,4 @@
 ---
 # This playbook deploys the whole application stack in this site.
-- name: playbook
-  hosts: all
-  become: true
-  user: vagrant
-
-  roles:
-    - common
+- name: include common role
+  import_playbook: common.yml

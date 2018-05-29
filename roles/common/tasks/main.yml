@@ -1,18 +1,47 @@
 ---
-- name: Add Elasticsearch GPG key.
-  rpm_key:
-    key: https://packages.elastic.co/GPG-KEY-elasticsearch
-    state: present
-
-- name: Add elastic repository.
-  copy:
-    src: elastic.repo
-    dest: /etc/yum.repos.d/elastic.repo
-    mode: 0644
-
-- name: install linux basic tools
+- name: install common software
   yum:
     name: "{{ item }}"
     state: present
+  update_cache: yes
   with_items:
+    - epel-release
+    - vim
     - net-tools
+
+- name: debug selinux
+  debug: var=ansible_selinux
+
+# - name: disable selinux
+#   selinux:
+#     policy: targeted
+#     state: disabled
+#   when: ansible_selinux.status == "enabled"
+#   notify:
+#     - restart os
+
+# - name: Create a 2048-bit SSH key for user vagrant in ~/vagrant/.ssh/id_rsa
+#   user:
+#     name: vagrant
+#     generate_ssh_key: yes
+#     ssh_key_bits: 2048
+#     ssh_key_file: .ssh/id_rsa
+#   delegate_to: "{{ groups['kubernetes-master'][0] }}"
+
+# - name: "Upload kubernetes pem file"
+#   synchronize: src=/opt/ssl/{{ item }} dest=/etc/kubernetes/ssl/
+#   with_items:
+#     - kubernetes-key.pem
+#     - kubernetes.pem
+#   delegate_to: "{{ groups['kubernetes-master'][0] }}"
+#   when: "'masters' in group_names"
+
+# - name: Create admin user with ssh key pair
+#   user:
+#     name: myadmin
+#     generate_ssh_key: yes
+#     state: present
+#     register: myadmin
+
+# - name: debug
+#   debug: var=myadmin

@@ -1,0 +1,4 @@
+---
+- name: restart os
+  command: reboot
+  ignore_errors: yes
