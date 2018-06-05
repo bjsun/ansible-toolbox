@@ -2,8 +2,8 @@
 # vi: set ft=ruby :
 Vagrant.configure("2") do |config|
   config.vm.box_check_update = false
-  # config.vm.box = "centos/7"
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "centos/7"
+  # config.vm.box = "ubuntu/trusty64"
   # config.vm.box = "ubuntu/xenial64"
   config.ssh.forward_agent = true
   config.hostmanager.enabled = true
@@ -13,9 +13,9 @@ Vagrant.configure("2") do |config|
   config.ssh.insert_key = false
   # VM Define
   cluster = [
-    { :name => 'master', :ip => '10.10.15.10', :memory => 2048, :cpu => 2},
-    { :name => 'node1',  :ip => '10.10.15.11', :memory => 1024, :cpu => 1},
-    { :name => 'node2',  :ip => '10.10.15.12', :memory => 1024, :cpu => 1}
+    { :name => 'master', :ip => '10.10.10.10', :memory => 2048, :cpu => 2},
+    { :name => 'node1',  :ip => '10.10.10.11', :memory => 1024, :cpu => 1},
+    { :name => 'node2',  :ip => '10.10.10.12', :memory => 1024, :cpu => 1}
   ]
 
   cluster.each do |vm|
