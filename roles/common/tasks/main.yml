@@ -8,6 +8,7 @@
     - epel-release
     - vim
     - net-tools
+    - wget
 
 - name: debug selinux
   debug: var=ansible_selinux
