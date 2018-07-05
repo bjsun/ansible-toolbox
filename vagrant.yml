@@ -6,3 +6,6 @@
   user: vagrant
   roles:
     - vagrant
+
+- name: Include common software package
+  import_playbook: common.yml

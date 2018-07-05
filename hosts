@@ -18,6 +18,11 @@ master
 node1
 node2
 
+[docker]
+master
+node1
+node2
+
 [etcd]
 master
 node1
