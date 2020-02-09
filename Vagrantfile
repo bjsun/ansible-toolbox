@@ -13,9 +13,9 @@ Vagrant.configure("2") do |config|
   config.ssh.insert_key = false
   # VM Define
   cluster = [
-    { :name => 'master', :ip => '10.10.10.10', :memory => 2048, :cpu => 2},
-    { :name => 'node1',  :ip => '10.10.10.11', :memory => 1024, :cpu => 1},
-    { :name => 'node2',  :ip => '10.10.10.12', :memory => 1024, :cpu => 1}
+    { :name => 'master', :ip => '192.168.99.10', :memory => 2048, :cpu => 2},
+    { :name => 'node1',  :ip => '192.168.99.11', :memory => 1024, :cpu => 1},
+    { :name => 'node2',  :ip => '192.168.99.12', :memory => 1024, :cpu => 1}
   ]
 
   cluster.each do |vm|
@@ -26,6 +26,8 @@ Vagrant.configure("2") do |config|
         vb.name   = vm[:name]
         vb.memory = vm[:memory]
         vb.cpus   = vm[:cpu]
+        vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+        vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
       end
     end
   end
