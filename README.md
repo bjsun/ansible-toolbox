@@ -1,20 +1,11 @@
-## Ansible test
+# Ansible ToolBox For daily scripts Testing
 
 ## Inventory/Hosts conifg
 
-使用 `vagrant ssh-config` 命令生成 ssh-config 输出到 ~/.ssh/config 文件中：
+Use **vagrant ssh-config** command output ssh config to `~/.ssh/config`, After we can use ssh command login to vagrant virtual machine.
+You can reference follow example:
 
-```
+```bash
 $ vagrant ssh-config >> ~/.ssh/config
 $ ssh master
-```
-
-## Vagrant安装 `vagrant-hostmanager` 插件维护虚拟机 hosts 文件
-
-```
-$ vagrant plugin install vagrant-hostmanager
-$ vagrant hostmanager
-[master] Updating /etc/hosts file...
-[node1] Updating /etc/hosts file...
-[node2] Updating /etc/hosts file...
 ```
