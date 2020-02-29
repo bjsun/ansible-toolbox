@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   # config.vm.box = "ubuntu/trusty64"
   # config.vm.box = "ubuntu/xenial64"
   config.ssh.forward_agent = true
-  config.hostmanager.enabled = true
+  # config.hostmanager.enabled = false
   # Disable the new default behavior introduced in Vagrant 1.7, to
   # ensure that all Vagrant machines will use the same SSH key pair.
   # See https://github.com/mitchellh/vagrant/issues/5005
