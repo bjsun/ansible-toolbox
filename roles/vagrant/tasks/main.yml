@@ -1,10 +1,10 @@
 ---
 # https://github.com/hashicorp/vagrant/tree/master/keys
-- name: create ~/.ssh directory for virtual machine user
+- name: Create ~/.ssh directory for virtual machine user
   file: path="{{ item.home }}/.ssh" state=directory mode=0700
   with_items: "{{ users }}"
 
-- name: copy vagrant private key to virtual machine user
+- name: Copy vagrant private key to virtual machine user
   copy:
     src: "{{ lookup('env','HOME') + '/.vagrant.d/insecure_private_key' }}"
     dest: "{{ item.home }}/.ssh/id_rsa"
@@ -12,6 +12,15 @@
     mode: 0600
   with_items: "{{ users }}"
 
-- name: set vagrant default authorized key
+- name: Set vagrant default authorized key
   authorized_key: user="{{ item.user }}" state=present key="{{lookup('file', 'vagrant.pub') }}"
   with_items: "{{ users }}"
+
+- name: Add all vagrant virtual machine's hostname to /etc/hosts
+  template:
+    src: hosts.j2
+    dest: /etc/hosts
+    owner: root
+    group: root
+    mode: "0644"
+
